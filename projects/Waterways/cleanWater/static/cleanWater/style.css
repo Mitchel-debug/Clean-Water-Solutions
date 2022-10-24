@@ -1,0 +1,33 @@
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.bg-image{
+    filter: brightness(50%)
+}
+/* .bg-image::after{
+    background-color: rgba(112, 23, 190, 0.25);
+} */
+
+.butt{
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    padding-right: 15px;
+
+}
+.bett{
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 23px;
+}
+
+#butt1{
+    margin-left: 15px;
+}
