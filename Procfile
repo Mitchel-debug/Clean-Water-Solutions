@@ -1,1 +1,1 @@
-web: gunicorn WATERWAYS.wsgi --log-file -
+web: gunicorn cleanWater.wsgi --log-file -
