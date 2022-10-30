@@ -1,12 +1,15 @@
 import email
 from locale import currency
+from django.db import IntegrityError
 from django.shortcuts import redirect, render
 from django.shortcuts import render
 from django.urls import reverse
+from django.contrib.auth import authenticate, login, logout
 from urllib3 import HTTPResponse
 import cleanWater
 from django.http import HttpResponseRedirect, JsonResponse
 import stripe
+from .models import User
 
 stripe.api_key = "sk_test_51LyJ17BSE8CSa3qNLumX2XXGcoidGdc3sypq7xVE8sLhD2e8Oa7NAweBoNhDQdyVYHzdTWdDjmsvzuhXUhurgtvV008Np5GhjP" 
 
@@ -17,7 +20,7 @@ def index(request):
     })
     
 def charge(request):
-    amount = 5
+    amount=int(request.POST['amount'])
     if request.method == 'POST':
         print("Data: ", request.POST)
         
@@ -29,7 +32,7 @@ def charge(request):
         
         charge = stripe.Charge.create(
             customer=customer,
-            amount=500,
+            amount=amount*100,
             currency="usd",
             description="Donation",
             
@@ -42,3 +45,56 @@ def successMsg(request, args):
     return render(request, "cleanWater/success.html", {
         "amount": amount
     })
+    
+
+def register(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        email = request.POST["email"]
+
+        # Ensure password matches confirmation
+        password = request.POST["password"]
+        confirmation = request.POST["confirmation"]
+        if password != confirmation:
+            return render(request, "cleanWater/register.html", {
+                "message": "Passwords must match."
+            })
+
+        # Attempt to create new user
+        try:
+            user = User.objects.create_user(username, email, password)
+            user.save()
+        except IntegrityError:
+            return render(request, "cleanWater/register.html", {
+                "message": "Username already taken."
+            })
+        login(request, user)
+        return HttpResponseRedirect(reverse("index"))
+    else:
+        return render(request, "cleanWater/register.html")
+def login_view(request):
+    if request.method == "POST":
+
+        # Attempt to sign user in
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+
+        # Check if authentication successful
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse("index"))
+        else:
+            return render(request, "cleanWater/login.html", {
+                "message": "Invalid username and/or password."
+            })
+    else:
+        return render(request, "cleanWater/login.html")
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse("index"))
+
+def takeaction(request):
+    return render(request, "cleanWater/takeAction.html")

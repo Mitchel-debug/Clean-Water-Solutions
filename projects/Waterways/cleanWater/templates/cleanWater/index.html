@@ -7,11 +7,16 @@
 </div>
 
 <div class="centered">
-    <h1>Help us make Newark a safe space</h1>
+    <h1>Help us make our city a safe space</h1>
     <p>Ensure availability and sustainable management of water and sanitation for all.</p>
     <div class="butt">
-        <button class="bett">Sign up now</button>
+        {% if user.is_authenticated %}
+            <button class="bett" id="butt1">Donate</button>
+        
+        {% else %}
+        <a href="{% url 'register' %}"><input type="button" class="bett" value="Sign Up"></a>
         <button class="bett" id="butt1">Donate</button>
+        {% endif %}
     </div>
 </div>
 
@@ -26,9 +31,11 @@
             </div>
             <form action="{% url 'charge' %}" class="input-group" id="payment-form" method="post">
                 {% csrf_token %}
-                <input type="email" name="email" placeholder="Email...">
-                <input type="text" name="nickname" placeholder="Nickname...">
-                <div class="form-row">
+                <input type="email" class="input-field" name="email" placeholder="Email..." required>
+                <input type="text" class="input-field" name="nickname" placeholder="Nickname..." required>
+                <input type="number" class="input-field" name="amount" id="amount" placeholder="Enter Amount" required>
+
+                <div class="input-field">
                     <label for="card-element">
                         Credit or debit card
                     </label>
