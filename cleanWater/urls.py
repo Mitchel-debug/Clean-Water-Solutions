@@ -10,6 +10,10 @@ urlpatterns = [
     path("logout", views.logout_view, name="logout"),
     path("register", views.register, name="register"),
     path("takeaction", views.takeaction, name="takeaction"),
+    path("report", views.report, name="report"),
+    path("articles", views.articles, name="articles"),
+    path("about", views.about, name="about"),
+    path("articles/<str:articles_id>", views.showArticles, name="articles"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

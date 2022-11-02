@@ -9,7 +9,7 @@ from urllib3 import HTTPResponse
 import cleanWater
 from django.http import HttpResponseRedirect, JsonResponse
 import stripe
-from .models import User
+from .models import Articles, User
 
 stripe.api_key = "sk_test_51LyJ17BSE8CSa3qNLumX2XXGcoidGdc3sypq7xVE8sLhD2e8Oa7NAweBoNhDQdyVYHzdTWdDjmsvzuhXUhurgtvV008Np5GhjP" 
 
@@ -98,3 +98,21 @@ def logout_view(request):
 
 def takeaction(request):
     return render(request, "cleanWater/takeAction.html")
+
+def report(request):
+    return render(request, "cleanWater/report.html")
+
+def articles(request):
+    article=Articles.objects.all()
+    return render(request, "cleanWater/articles.html", {
+        "Articles": article
+    })
+def about(request):
+    return render(request, "cleanWater/about.html")
+
+def showArticles(request, articles_id):
+    art = Articles.objects.get(pk=articles_id)
+
+    return render(request, "cleanWater/showArticle.html", {
+        "art": art
+    })

@@ -26,16 +26,21 @@
         <div class="form-box">
             <div class="button-box">
                 <div id="btn"></div>
-                <button type="button" class="toggle-btn">GIVE ONCE</button>
-                <button type="button" class="toggle-btn">MONTHLY</button>
+                <button type="button" class="toggle-btn">DONATE</button>
+
             </div>
             <form action="{% url 'charge' %}" class="input-group" id="payment-form" method="post">
                 {% csrf_token %}
-                <input type="email" class="input-field" name="email" placeholder="Email..." required>
-                <input type="text" class="input-field" name="nickname" placeholder="Nickname..." required>
-                <input type="number" class="input-field" name="amount" id="amount" placeholder="Enter Amount" required>
-
-                <div class="input-field">
+                <div class="form-field-6">
+                    <input type="email" class="input-field" name="email" placeholder="Email..." required>
+                </div>
+                <div class="form-field-6">
+                    <input type="text" class="input-field" name="nickname" placeholder="Nickname..." required>
+                </div>
+                <div class="form-field-6">
+                    <input type="number" class="input-field" name="amount" id="amount" placeholder="Enter Amount" required>
+                </div>
+                <div class="form-row">
                     <label for="card-element">
                         Credit or debit card
                     </label>
@@ -44,8 +49,15 @@
                     </div>
                     <div id="card-errors" role="alert"></div>
                 </div>
-                <button id="butt12">Submit Payment</button>
+                
+                <input type="submit" id="butt12" value="Submit Payment">
             </form>
+        </div>
+        <div class="flec2">
+            <h4>771 million people lack basic access to clean and safe drinking water. We're on a mission to change that.</h4>
+            <p>The water crisis is massive. But together, we can solve it. We are 100% donation-funded, We partner with both Profit and non-profit organizations. Know that your generosity will bring clean water to families around the world.
+
+            </p>
         </div>
     </div>
     

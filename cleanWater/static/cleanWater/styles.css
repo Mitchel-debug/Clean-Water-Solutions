@@ -36,30 +36,79 @@ body{
     margin-left: 15px;
 }
 
-.container{
-    width: 100%;
+.container2{
+    width: 1100px;
+    max-width: 100%;
+    margin: 0 auto;
+
 
 }
+
+.row2{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card2{
+    flex: 1 1 20rem;
+
+    display: flex;
+    align-items: center;
+    margin: 10px 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    background: #ffffff;
+    padding: 10px 20px;
+    flex-direction: column;
+    align-self: normal;
+}
+
+.card img{
+    max-width: 200px;
+    height: 200px;
+}
+
+.card2 h5{
+    font-size: 1.3rem;
+    margin: 10px 0;
+}
+.card2 p{
+    margin-bottom: 10px;
+}
+#lol{
+
+    display: inline-block;
+    background: green;
+    margin-top: auto;
+    color: #fff;
+    text-align: center;
+
+    padding: 10px 20px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+
+}
+
 .h{
     text-align: center;
     padding: 10px;
 }
-.hero{
-    height: 100%;
-    width: 100%;
-}
+
 
 .form-box{
     width: 480px;
-    height: 480px;
+    height: 500px;
     position: relative;
-    margin: 6% auto;
+    margin: 30px;
     padding: 5px;
     background: white;
 }
 
 .button-box{
-    width: 300px;
+    width: 140px;
     margin: 35px auto;
     position: relative;
     box-shadow: 0 0 20px 9px #4824ff1f;
@@ -67,7 +116,7 @@ body{
 }
 
 .toggle-btn{
-    padding: 10px 30px;
+    padding: 10px 40px;
     cursor: pointer;
     background: transparent;
     border: 0;
@@ -81,7 +130,7 @@ body{
     position: absolute;
     width: 140px;
     height: 100%;
-    background: linear-gradient(to right, #101cff, #0687ff);
+    background: linear-gradient(to right, #3e47ef, #0687ff);
     border-radius: 30px;
     transition: .5s;
     
@@ -119,11 +168,49 @@ body{
     transition: .5s;
 }
 .input-field{
-    width: 100px;
+    width: 380px;
     padding: 10px 0;
-    margin: 5px 0;
+    margin: 5px 40px;
     border-left: 0;
     border-top: 0;
     border-right: 0;
     border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+
+.form-row{
+    width: 380px;
+    margin: 5px 40px;
+}
+#butt12{
+    width: 85%;
+    padding: 10px 0;
+    cursor: pointer;
+    margin: auto;
+
+    display:block;
+    background: linear-gradient(to right, #101cff, #0687ff);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+.hero{
+    display: flex;
+}
+
+.flec2{
+    width: 500px;
+    margin: 30px;
+}
+.text2{
+    margin: 50px;
+    width: 500px;
+
+}
+.request_form{
+    width: 50%;
+    overflow: auto;
+    border: 1px solid blue;
 }

@@ -45,13 +45,16 @@ form.addEventListener("submit", function(event){
     });
 });
 
+var oneorm = document.getElementById("card-element")
 function stripeTokenHandler(token){
     var form = document.getElementById("payment-form");
     var hiddenInput = document.createElement("input");
     hiddenInput.setAttribute("name", "stripeToken");
     hiddenInput.setAttribute("id", "strip");
     hiddenInput.setAttribute("value", token.id);
-    form.appendChild(hiddenInput);
+
+    oneorm.appendChild(hiddenInput);
+
 
     document.getElementById("butt12").addEventListener("click", function () {
         form.submit();
